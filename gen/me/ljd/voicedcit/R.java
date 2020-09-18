@@ -18,9 +18,9 @@ public final class R {
     }
     public static final class id {
         public static final int edt_key_word=0x7f050002;
-        public static final int edt_start_query=0x7f050003;
         public static final int img_voice_query=0x7f050001;
         public static final int txt_show_result=0x7f050000;
+        public static final int txt_start_query=0x7f050003;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
