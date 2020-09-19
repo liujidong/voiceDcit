@@ -12,7 +12,9 @@ import android.view.View.OnClickListener;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 import me.ljd.dict.util.AsycHttp;
+import me.ljd.dict.util.AsycHttp.OnResonseListener;
 import me.ljd.dict.util.Contants;
 import me.ljd.voicedcit.R;
 
@@ -40,8 +42,22 @@ public class DictActivity extends Activity {
 				// 获取内容
 				String input = mEditInput.getText().toString().trim();
 				Map<String,String> params = Contants.getParams(input);
-				AsycHttp.getInstance().requestForHttp(Contants.PATH_BASE, params);
+				AsycHttp.getInstance().requestForHttp(Contants.PATH_BASE, params,monResonseListener);
 			}
 		});
 	}
+	OnResonseListener monResonseListener = new OnResonseListener() {
+
+		@Override
+		public void onSuccess(String result) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void onFailed(String error) {
+			Toast.makeText(DictActivity.this, "数据错误："+error, Toast.LENGTH_LONG).show();
+		}
+		
+	};
 }

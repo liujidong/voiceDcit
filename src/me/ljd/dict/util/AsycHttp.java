@@ -43,7 +43,7 @@ public class AsycHttp {
 		return mAsycHttp;
 	}
 	
-	public void requestForHttp(String url,Map<String,String> params){
+	public void requestForHttp(String url,Map<String,String> params,OnResonseListener monResonseListener){
 		if(params != null) {
 	        /** httpPost */
 	        HttpPost httpPost = new HttpPost(url);
@@ -58,7 +58,7 @@ public class AsycHttp {
 	        try {
 				httpPost.setEntity(new UrlEncodedFormEntity(paramsList,"UTF-8"));
 				
-				new DictAsycTak().execute(httpPost);
+				new DictAsycTak(monResonseListener).execute(httpPost);
 			} catch (UnsupportedEncodingException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -66,6 +66,10 @@ public class AsycHttp {
 		}
     }
     class DictAsycTak extends AsyncTask<HttpUriRequest, Void, String>{
+    	OnResonseListener monResonseListener;
+    	public DictAsycTak(OnResonseListener monResonseListener) {
+    		this.monResonseListener = monResonseListener;
+    	}
 
     	int resultCode;
 		@Override
@@ -102,10 +106,17 @@ public class AsycHttp {
 			if(null != result) {
 				//成功
 				Log.i(TAG, "结果:"+result);
+				monResonseListener.onSuccess(result);
 			}else {
 				Log.e(TAG, "失败："+resultCode);
+				monResonseListener.onFailed("error-->"+resultCode);
 			}
 		}
     	
+    }
+    //回调接口
+    public interface OnResonseListener{
+    	void onSuccess(String result);
+    	void onFailed(String error);
     }
 }
