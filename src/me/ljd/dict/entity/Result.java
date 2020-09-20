@@ -19,6 +19,8 @@ public class Result {
 		return "关键字："+checkIsEmpty(query)+"\n"
 				+"有道翻译："+checkIsEmpty(translation)+"\n"
 				+"中文发音："+checkIsEmpty(phonetic)+"\n"
+				+"美式发音："+checkIsEmpty(usPhonetic)+"\n"
+				+"英式发音："+checkIsEmpty(ukPhonetic)+"\n"
 				+"基本释义："+getExplain()+"\n"
 				+"网络释义："+getWeb();
 	}

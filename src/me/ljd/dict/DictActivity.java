@@ -16,6 +16,7 @@ import android.widget.Toast;
 import me.ljd.dict.util.AsycHttp;
 import me.ljd.dict.util.AsycHttp.OnResonseListener;
 import me.ljd.dict.util.Contants;
+import me.ljd.dict.util.Parser;
 import me.ljd.voicedcit.R;
 
 public class DictActivity extends Activity {
@@ -50,8 +51,7 @@ public class DictActivity extends Activity {
 
 		@Override
 		public void onSuccess(String result) {
-			// TODO Auto-generated method stub
-			
+			mTxtShowResult.setText(Parser.ParserData(result).toString());
 		}
 
 		@Override

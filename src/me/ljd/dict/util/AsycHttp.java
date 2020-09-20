@@ -105,10 +105,10 @@ public class AsycHttp {
 			super.onPostExecute(result);
 			if(null != result) {
 				//成功
-				Log.i(TAG, "结果:"+result);
+				//Log.i(TAG, "结果:"+result);
 				monResonseListener.onSuccess(result);
 			}else {
-				Log.e(TAG, "失败："+resultCode);
+				//Log.e(TAG, "失败："+resultCode);
 				monResonseListener.onFailed("error-->"+resultCode);
 			}
 		}
